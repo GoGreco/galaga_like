@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df0xx7wt6yx8k"
-path="res://.godot/imported/bullet.png-5cdeeeaa620968ac9fce7355b99ad583.ctex"
+uid="uid://baedtkeo3fbep"
+path="res://.godot/imported/star_large.png-9d76b62a49471541a070b10addb6c7bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/player/bullet.png"
-dest_files=["res://.godot/imported/bullet.png-5cdeeeaa620968ac9fce7355b99ad583.ctex"]
+source_file="res://assets/images/Backgorund/star_large.png"
+dest_files=["res://.godot/imported/star_large.png-9d76b62a49471541a070b10addb6c7bd.ctex"]
 
 [params]
 

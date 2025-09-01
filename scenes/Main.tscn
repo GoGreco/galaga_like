@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3k07wbtx8x36"]
+
+[ext_resource type="PackedScene" uid="uid://bs86jp2v0gaf8" path="res://scenes/background.tscn" id="2_rarhs"]
+[ext_resource type="PackedScene" uid="uid://bosfaolcv5u0l" path="res://scenes/Enemy.tscn" id="3_0bbpv"]
+[ext_resource type="PackedScene" uid="uid://clatrivgvjyxq" path="res://scenes/Ship.tscn" id="3_vcsgt"]
+
+[node name="Main" type="Node"]
+
+[node name="Background" parent="." instance=ExtResource("2_rarhs")]
+
+[node name="Ship" parent="." instance=ExtResource("3_vcsgt")]
+position = Vector2(135, 529)
+
+[node name="Enemy" parent="." instance=ExtResource("3_0bbpv")]

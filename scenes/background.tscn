@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://bs86jp2v0gaf8"]
+
+[ext_resource type="Script" uid="uid://ddjely1ieun1r" path="res://scenes/background.gd" id="1_jougr"]
+[ext_resource type="Texture2D" uid="uid://bbw4e2iwla7wf" path="res://assets/images/Backgorund/bg.png" id="1_y0upk"]
+[ext_resource type="PackedScene" uid="uid://bosfaolcv5u0l" path="res://scenes/Enemy.tscn" id="2_cbsqf"]
+[ext_resource type="Texture2D" uid="uid://5u2n3lstdeik" path="res://assets/images/Backgorund/star_small.png" id="2_jougr"]
+
+[sub_resource type="Curve" id="Curve_cbsqf"]
+_limits = [0.0, 1.07865, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 1.07865, 0, 1, Vector2(1, 1.07865), 1.07865, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wisxt"]
+curve = SubResource("Curve_cbsqf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wax1t"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(150, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(150, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+scale_over_velocity_curve = SubResource("CurveTexture_wisxt")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbsqf"]
+size = Vector2(300, 30)
+
+[node name="Map" type="Node"]
+script = ExtResource("1_jougr")
+enemy_to_spawn = ExtResource("2_cbsqf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = ExtResource("1_y0upk")
+centered = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+texture = ExtResource("2_jougr")
+lifetime = 60.0
+preprocess = 40.0
+process_material = SubResource("ParticleProcessMaterial_wax1t")
+
+[node name="spawnArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawnArea"]
+position = Vector2(150, -50)
+shape = SubResource("RectangleShape2D_cbsqf")
+
+[node name="Spawn_timer" type="Timer" parent="."]
+wait_time = 0.383
+
+[connection signal="timeout" from="Spawn_timer" to="." method="_on_spawn_timer_timeout"]
